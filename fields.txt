@@ -1,0 +1,7 @@
+TEACHER:
+s.no ,ID, fname, lname(option) ,Institution,counselling_code,ph.no,email,address,DOB,dept,grade level,subjects thought
+
+STUDENT:
+s.no,ID(to be allocated),fname,lname(optional),user_name,password,institute_name,counselling_code,DOB,dept,
+
+

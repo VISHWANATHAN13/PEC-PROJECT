@@ -1,0 +1,56 @@
+<?php
+// Start the session
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php"); // Redirect to home page if not logged in
+    exit();
+}
+
+// Check if the logout button is clicked
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logout"])) {
+    // Clear all session variables
+    session_unset();
+
+    // Destroy the session
+    session_destroy();
+
+    // Redirect to the home page
+    header("Location: index.php");
+    exit();
+}
+?>
+
+<!-- HTML for the logout button -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+</head>
+<body>
+
+    <h2>Welcome, User!</h2>
+    
+    <!-- Logout form -->
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <input type="submit" name="logout" value="Logout">
+    </form>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------
+In this example:
+
+The session is started using session_start() at the beginning of the script.
+It checks if the user is logged in by verifying the presence of a session variable ($_SESSION['user_id']).
+If the logout button is clicked ($_POST["logout"]), it clears all session variables and destroys the session.
+After logout, it redirects the user to the home page (index.php) using header("Location: index.php").
+Make sure to customize this code according to your application's structure and requirements.
+
+
+
+
+
